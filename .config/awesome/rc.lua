@@ -7,7 +7,8 @@
 
 pcall(require, 'luarocks.loader')
 
-local awful = require("awful")
+local awful = require('awful')
+--local naughty = require('naughty')
 require('error')
 require('theme')
 require('layouts')
@@ -32,3 +33,7 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
+
+--package.loaded["naughty.dbus"] = {}
+--package.loaded["naughty"] = {}
+--naughty.disable()

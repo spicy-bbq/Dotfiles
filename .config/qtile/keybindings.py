@@ -47,4 +47,5 @@ keys = [
     Key([mod, "control"], "Escape", lazy.spawn("fish -c ~/.config/qtile/powermenu.sh"), desc='Power menu'),
     Key([mod], "L", lazy.spawn("betterlockscreen -l"), desc='Lock screen'),
     Key([mod], "period", lazy.spawn("rofi -modi emoji -show emoji -hover-select -me-select-entry '' -me-accept-entry MousePrimary"), desc='Launch emoji picker'),
+    Key([mod], 'a', lazy.spawn('eww open --toggle nokia')),
 ]

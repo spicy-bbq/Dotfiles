@@ -24,8 +24,8 @@ beautiful.border_width = border
 beautiful.border_normal = color2
 beautiful.border_focus  = color1
 beautiful.border_marked = color1
-beautiful.tasklist_disable_icon = true
-beautiful.systray_icon_spacing = 5
+beautiful.tasklist_disable_icon = disable_tasklist_icon
+beautiful.systray_icon_spacing = systray_icon_spacing
 
 -- Generate taglist squares:
 local taglist_square_size = 6
@@ -38,17 +38,17 @@ beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(
 beautiful.taglist_font = font .. '10'
 
 -- Variables set for theming notifications:
-notification_font = font
-notification_bg = color1
-notification_fg = color2
---notification_[width|height|margin]
-notification_border_color = color2
-notification_border_width = 3
---notification_[border_color|border_width|shape|opacity]
-
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
+beautiful.notification_font = font
+beautiful.notification_bg = color2
+beautiful.notification_fg = color1
+beautiful.notification_width = notification_width
+beautiful.notification_height = notification_height
+beautiful.notification_margin = notification_margin
+beautiful.notification_border_color = color2
+beautiful.notification_border_color = color1
+beautiful.notification_icon_size = notification_icon_size
+beautiful.notification_shape = gears.shape.rounded_rect
+beautiful.notification_border_width = 6
 
 -- You can use your own layout icons like this:
 beautiful.layout_fairh = themes_path.."default/layouts/fairhw.png"
@@ -68,8 +68,6 @@ beautiful.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 beautiful.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 beautiful.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 beautiful.icon_theme = icon_theme
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)

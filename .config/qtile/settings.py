@@ -3,7 +3,7 @@ from colors import *
 
 @hook.subscribe.startup
 def get_colors():
-    color1 = yellow
+    color1 = blue
     color2 = fullblack
     color3 = white
     return[color1, color2, color3]

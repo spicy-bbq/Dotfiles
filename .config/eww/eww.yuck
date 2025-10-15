@@ -499,11 +499,10 @@
 	:monitor 0
     :geometry
         (geometry
-            :x '1600px'
+            :x '80px'
             :y '100px'
         )
 	:wm-ignore true
 	:windowtype 'normal'
-    :stacking 'bg'
-    :wm-ignore 'false'
+    :wm-ignore false
 (nokiawidget))

@@ -71,6 +71,8 @@ alias hyprrc="nvim ~/.config/hypr/hyprland.conf"
 alias nb="python3 ~/projects/nekoboard/nekoboard.py"
 alias org="nvim ~/Documents/org"
 alias awesomerc='nvim ~/.config/awesome'
+alias nvimstats='python3 .config/nvim/stats.py'
+alias matrix="rusty-rain -g jap -s -C 248,189,150"
 
 #############
 # Functions #

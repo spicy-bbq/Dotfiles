@@ -4,52 +4,87 @@ local wibox = require('wibox')
 local beautiful = require('beautiful')
 require('settings')
 
+local confirm_message = wibox.widget {
+    text = 'a',
+    widget = wibox.widget.textbox
+}
+
+local yes = wibox.widget {
+    text = 'Yes',
+    widget = wibox.widget.textbox
+}
+
+local no = wibox.widget {
+    text = 'No',
+    widget = wibox.widget.textbox
+}
+
+local confirm = awful.popup {
+    widget = {
+        confirm_message,
+        {
+            yes,
+            no,
+            layout = wibox.layout.fixed.horizontal
+        },
+        layout = wibox.layout.fixed.vertical
+    },
+    ontop = true,
+    visible = false
+}
+
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+        if client.focus then
+            client.focus:move_to_tag(t)
+        end
+    end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+        if client.focus then
+            client.focus:toggle_tag(t)
+        end
+    end),
+    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+)
 
 local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+    awful.button({ }, 1, function (c)
+        if c == client.focus then
+            c.minimized = true
+        else
+            c:emit_signal(
+                "request::activate",
+                "tasklist",
+                {raise = true})
+        end
+    end),
+    awful.button({ }, 3, function()
+        awful.menu.client_list({ theme = { width = 250 } })
+    end),
+    awful.button({ }, 4, function ()
+        awful.client.focus.byidx(1)
+    end),
+    awful.button({ }, 5, function ()
+        awful.client.focus.byidx(-1)
+    end))
 
 awful.screen.connect_for_each_screen(function(s)
+
+    if floating_bar then
+        top_padding = screen_padding * 3 + bar_height
+    else
+        top_padding = screen_padding + bar_height
+    end
 
     s.padding = {
         left = screen_padding,
         right = screen_padding,
-        top = screen_padding,
+        top = top_padding,
         bottom = screen_padding
     }
 
@@ -78,16 +113,60 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        filter  = awful.widget.tasklist.filter.focused,
+        buttons = tasklist_buttons,
+        widget_template = {
+        {
+            {
+                {
+                    {
+                        id     = 'icon_role',
+                        widget = wibox.widget.imagebox,
+                    },
+                    margins = 2,
+                    widget  = wibox.container.margin,
+                },
+                {
+                    id     = 'text_role',
+                    widget = wibox.widget.textbox,
+                },
+                layout = wibox.layout.fixed.horizontal,
+            },
+            left  = 5,
+            right = 5,
+            widget = wibox.container.margin
+        },
+        id     = 'background_role',
+        widget = wibox.container.background,
+    },
     }
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ 
-        position = 'bottom',
+    if floating_bar then
+        bar_x = 20
+        bar_y = 10
+        bar_shape = gears.shape.rounded_rect
+        bar_width_actual = bar_width
+    else
+        bar_x = 0
+        bar_y = 0
+        bar_shape = gears.shape.rect
+        bar_width_actual = resolution[1]
+    end
+
+    s.mywibox = wibox({ 
+        --position = 'bottom',
         screen = s,
-        height = 28,
+        height = bar_height,
+        width = bar_width_actual,
+        ontop = false,
+        border_width = bar_border_width,
+        border_color = beautiful.border_focus, 
+        shape = bar_shape,
+        x = bar_x,
+        y = bar_y,
+        type = 'dock',
     })
+    s.mywibox.visible = true
 
     separator = wibox.widget {
         text = ' ',
@@ -112,7 +191,8 @@ awful.screen.connect_for_each_screen(function(s)
     nightlight_button:buttons(gears.table.join(
         nightlight_button:buttons(),
         awful.button({}, 1, nil, function()
-            -- TODO
+            confirm_message.text = 'qaaa'
+            confirm.visible = true
         end)
     ))
 
@@ -448,8 +528,8 @@ awful.screen.connect_for_each_screen(function(s)
         border_width = border,
         shape = gears.shape.rounded_rect,
         ontop = true,
-        x = 0,
-        y = 715,
+        x = 20,
+        y = 50,
         visible = false
     }
 
@@ -491,8 +571,8 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             space,
         },
-        wibox.widget.separator(),
-        --s.mytasklist, -- Middle widget
+        --wibox.widget.separator(),
+        s.mytasklist, -- Middle widget
         { -- Right widgets
             space,
             awful.widget.watch('bash -c ~/.config/awesome/stats.sh', 1),

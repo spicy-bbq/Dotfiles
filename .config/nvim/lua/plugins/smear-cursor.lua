@@ -1,0 +1,21 @@
+return {
+    'sphamba/smear-cursor.nvim',
+
+    opts = {
+        smear_between_buffers = true,
+        smear_between_neighbor_lines = true,
+        scroll_buffer_space = true,
+        legacy_computing_symbol_support = true,
+        smear_insert_mode = true
+    },
+
+    config = function()
+        require('smear_cursor').toggle()
+        require('smear_cursor').setup({
+            cursor_color = '#ffffff',
+            stiffness = 0.9,
+            trailing_stiffness = 0.4,
+            gamma = 1,
+        })
+    end
+}

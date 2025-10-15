@@ -4,10 +4,11 @@ return {
     config = function()
         local configs = require 'nvim-treesitter.configs'
         configs.setup {
-            ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "c", "cmake", "vim", "vimdoc" },
+            --ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "c", "cmake", "vim", "vimdoc" },
+            ensure_installed = 'all',
             sync_install = true,
             auto_install = true,
-            ignore_install = { "html"},
+            ignore_install = { 'html', 'ipkg', 'org'},
             highlight = {
                 enable = true,
                 --disable = function(lang, buf)
