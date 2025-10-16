@@ -7,7 +7,7 @@ end
 ###########
 set fish_greeting
 starship init fish | source
-export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch
+#export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch
 #uwufetch
 #~/projects/nekostart/nekostart.sh
 #~/projects/nekofetch/nekofetch.sh
@@ -20,6 +20,13 @@ export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch
 #clear && ~/pokemon-icat/pokemon-icat.sh
 #pokemon-colorscripts -r --no-title
 #~/projects/nekofetch/nekofetch.sh --wow
+#kitty + kitten icat --align=left Pictures/madokapixelsmall.jpg
+#kitty + kitten icat --place 50x50@0x0 Pictures/madokapixelsmall.jpg
+#colorscript -e 45 | awk 'NR==3,NR==8'
+#colorscript -e 31 | awk 'NR==2,NR==10'
+#colorscript -e 39
+~/.config/fish/madoka.sh
+
 set fish_cursor_default block
 set fish_cursor_insert block
 
@@ -41,7 +48,8 @@ alias copypasta='cd ~/CopypastaBanner && python3 ./banner.py && cd'
 #alias clear='clear && ~/scripts/wow.sh'
 #alias clear='clear && uwufetch'
 #alias clear='clear && ~/projects/nekostart/nekostart.sh'
-alias clear='clear && export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch'
+#alias clear='clear && export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch'
+alias clear='clear && ~/.config/fish/madoka.sh'
 alias fishrc='nvim ~/.config/fish/config.fish'
 alias qtilerc='nvim ~/.config/qtile'
 alias kittyrc='nvim ~/.config/kitty/kitty.conf'
