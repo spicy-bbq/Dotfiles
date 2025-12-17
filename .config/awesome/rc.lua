@@ -17,6 +17,8 @@ require('mouse')
 require('keybindings')
 require('titlebar')
 require('rules')
+require('start_menu')
+require('popup_widgets')
 
 awful.spawn.with_shell('~/.config/awesome/autostart.sh')
 

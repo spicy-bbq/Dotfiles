@@ -1,3 +1,0 @@
-#! /bin/bash
-
-echo "$(hyprctl activewindow | grep pid | cut -d ':' -f2 | cut -d ' ' -f2)"

@@ -9,33 +9,33 @@ local themes_path = gfs.get_themes_dir()
 awesome.themes_path = '~/.config/awesome/themes'
 beautiful.init(gears.filesystem.get_themes_dir() .. theme .."/theme.lua")
 
-beautiful.font = font .. '10'
+beautiful.font = font
 beautiful.bg_normal = color2
 beautiful.bg_focus =  color1
 beautiful.bg_urgent = color1
 beautiful.bg_minimize = color2
-beautiful.bg_systray = color2
+beautiful.bg_systray = color1
 beautiful.fg_normal = color1
 beautiful.fg_focus = color2
 beautiful.fg_urgent = color2
-beautiful.fg_minimize = color3
+beautiful.fg_minimize = color2
 beautiful.useless_gap = gaps
 beautiful.border_width = border
 beautiful.border_normal = color2
-beautiful.border_focus  = color1
-beautiful.border_marked = color1
+beautiful.border_focus  = color2
+beautiful.border_marked = color2
 beautiful.tasklist_disable_icon = disable_tasklist_icon
 beautiful.systray_icon_spacing = systray_icon_spacing
 
 -- Generate taglist squares:
-local taglist_square_size = 6
-beautiful.taglist_squares_sel = beautiful.theme_assets.taglist_squares_sel(
-    taglist_square_size, beautiful.fg_focus
-)
-beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(
-    taglist_square_size, beautiful.fg_normal
-)
-beautiful.taglist_font = font .. '10'
+--local taglist_square_size = 12
+--beautiful.taglist_squares_sel = beautiful.theme_assets.taglist_squares_sel(
+--    taglist_square_size, beautiful.fg_focus
+--)
+--beautiful.taglist_squares_unsel = beautiful.theme_assets.taglist_squares_unsel(
+--    taglist_square_size, beautiful.fg_normal
+--)
+beautiful.taglist_font = font
 
 -- Variables set for theming notifications:
 beautiful.notification_font = font
@@ -45,7 +45,6 @@ beautiful.notification_width = notification_width
 beautiful.notification_height = notification_height
 beautiful.notification_margin = notification_margin
 beautiful.notification_border_color = color2
-beautiful.notification_border_color = color1
 beautiful.notification_icon_size = notification_icon_size
 beautiful.notification_shape = gears.shape.rounded_rect
 beautiful.notification_border_width = 6

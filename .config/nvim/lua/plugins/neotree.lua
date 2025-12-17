@@ -21,7 +21,8 @@ return {
         require('neo-tree').setup({
             window = {
                 width = 25,
-                height = 10
+                height = 10,
+                position = 'bottom',
             }
         })
     end

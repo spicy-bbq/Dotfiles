@@ -10,7 +10,7 @@ return {
       org_startup_folded = 'showeverything',
       win_split_mode = 'float',
       org_hide_emphasis_markers = true,
-      org_startup_indented = true,
+      org_startup_indented = false,
     })
 
     -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option

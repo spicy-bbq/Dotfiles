@@ -6,6 +6,10 @@ end
 # Startup #
 ###########
 set fish_greeting
+set fish_cursor_default block
+set fish_cursor_default block
+set fish_cursor_insert block
+
 starship init fish | source
 #export PF_INFO="ascii title os host kernel uptime pkgs wm" && pfetch
 #uwufetch
@@ -27,10 +31,7 @@ starship init fish | source
 #colorscript -e 39
 ~/.config/fish/madoka.sh
 
-set fish_cursor_default block
-set fish_cursor_insert block
-
-export PATH="$PATH:/home/kiefciman/.dotnet/tools"
+export "MICRO_TRUECOLOR=1"
 
 ###########
 # Aliases #
@@ -58,10 +59,10 @@ alias ewwrc='nvim ~/.config/eww/eww.yuck'
 alias ewwstyle='nvim ~/.config/eww/eww.scss'
 alias starshiprc='nvim ~/.config/starship.toml'
 alias c='clear'
-alias night='redshift -O 3500'
-#alias night='hyprsunset --temperature 3500 & disown'
-alias day='redshift -x'
-#alias day='killall hyprsunset'
+#alias night='redshift -O 3500'
+alias night='hyprsunset --temperature 3500 & disown'
+#alias day='redshift -x'
+alias day='killall hyprsunset'
 alias dunstrc='nvim ~/.config/dunst/dunstrc'
 alias vimrc='nvim ~/.config/nvim'
 alias rofirc='nvim .config/rofi/config.rasi'

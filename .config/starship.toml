@@ -25,8 +25,9 @@
 #[ ](fg:#7aa2f7)\
 #"""
 
+#[$username $directory ](fg:#f8bd96 bold)
 format = """
-[$username $directory ](fg:#f8bd96 bold)
+[$username $directory ](fg:#b4befe bold)
 """
 
 # Disable the blank line at the start of the prompt
@@ -36,14 +37,17 @@ add_newline = false
 [username]
 show_always = true
 #style_user = "bg:#bb9af7 fg:#1a1823"
-style_user = "fg:#f8bd96 bold"
-style_root = "fg:#f8bd96 bold"
+#style_user = "fg:#f8bd96 bold"
+style_user = "fg:#b4befe bold"
+#style_root = "fg:#f8bd96 bold"
+style_root = "fg:#b4befe bold"
 #style_root = "bg:#bb9af7 fg:#1a1823"
 format = '[\[ $user]($style)'
 
 [directory]
 #style = "bg:#f28fad fg:#1a1823"
-style = "fg:#f8bd96 bold"
+#style = "fg:#f8bd96 bold"
+style = "fg:#b4befe bold"
 format = '[ $path \]]($style)'
 truncation_length = 3
 truncation_symbol = "…/"
