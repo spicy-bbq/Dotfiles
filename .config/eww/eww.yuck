@@ -2,15 +2,14 @@
 (defpoll hour :interval "1s" `date +%H`)
 (defpoll minute :interval "1s" `date +%M`)
 (deflisten stats "bash ~/.config/eww/stats.sh")
+(defvar night true)
+(defvar nyamenu_open false)
 
 (defwidget bar []
   (box
     :class "bar"
     :space-evenly false
-    :hexpand false
-    (box
-      :width 5
-    )
+    :hexpand false 
     (eventbox
       :class "workspaces"
       (box 
@@ -32,6 +31,22 @@
           )
         )
       )
+    )
+    (eventbox :class "nyamenu-button"
+        :onclick {nyamenu_open == false ? "eww open nyamenu && eww open calendar && eww update nyamenu_open=true" : "eww close nyamenu && eww close calendar && eww update nyamenu_open=false"}
+        (box
+            :space-evenly false
+            (box
+                :width 10
+            )
+            (label
+                :text "󰣇 Nyamenu"
+                :show-truncated false
+            )
+            (box
+                :width 10
+            )
+        )
     )
     (box
       :class "window"
@@ -375,3 +390,74 @@
 	:windowtype 'normal'
     :wm-ignore true
 (nokiawidget))
+
+(defwidget nyamenu_widget []
+    (box :class 'nyamenu'
+        :width 200
+        :valign 'start'
+        :orientation 'v'
+        :space-evenly false
+        (eventbox :class 'nyamenu-entry'
+            :onclick {night == true ? "killall wlsunset && eww update night=false" : "wlsunset & disown && eww update night=true"} 
+            (label :class 'nyamenu-entry-label'
+                :text 'toggle night mode'
+                :xalign 0
+            )
+        )
+        (eventbox :class 'nyamenu-entry'
+            :onclick "eww reload"
+            (label :class 'nyamenu-entry-label'
+                :text 'reload eww'
+                :xalign 0
+            )
+        )
+        (eventbox :class 'nyamenu-entry'
+            :onclick "killall niri"
+            (label :class 'nyamenu-entry-label'
+                :text 'exit to tty'
+                :xalign 0
+            )
+        )
+        (eventbox :class 'nyamenu-entry'
+            :onclick "reboot"
+            (label :class 'nyamenu-entry-label'
+                :text 'reboot'
+                :xalign 0
+            )
+        )
+        (eventbox :class 'nyamenu-entry'
+            :onclick "shutdown now"
+            (label :class 'nyamenu-entry-label'
+                :text 'power off'
+                :xalign 0
+            )
+        )
+    )
+)
+
+(defwindow nyamenu
+    :monitor 0
+    :geometry (geometry
+        :x '65px'
+        :y '10px'
+    )
+    :windowtype 'normal'
+(nyamenu_widget))
+
+(defwidget calendar_widget []
+    (calendar :class 'calendar'
+        :show-details true
+        :show-heading true
+        :show-day-names true
+        :show-week-numbers false
+    )
+)
+
+(defwindow calendar
+    :monitor 0
+    :geometry (geometry
+        :x '1590px'
+        :y '10px'
+    )
+    :windowtype 'normal'
+(calendar_widget))
