@@ -1,0 +1,75 @@
+window {
+    background: linear-gradient(15deg, #f38ba8, #b4befe);
+    color: #11111b;
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+}
+
+/* search entry */
+entry {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #11111b;
+    border-radius: 15px;
+}
+
+button, image {
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #11111b;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* in case you wanted to give category buttons a different look */
+#category-button {
+}
+
+#pinned-box {
+    padding-bottom: 5px;
+}
+
+#files-box {
+    padding: 5px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: none;
+}
+
+/* math operation result label */
+#math-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+window > box > box:last-child {
+    font-size: 0px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    margin-top: -20px;
+}
+
+/* Remove scroll indicators/lines above and below the app grid */
+undershoot.top, 
+undershoot.bottom, 
+overshoot.top, 
+overshoot.bottom {
+    background: none;
+    border: none;
+}
+
+scrollbar {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    box-shadow: none;
+    color: rgba(0, 0, 0, 0);
+    opacity: 0;
+}

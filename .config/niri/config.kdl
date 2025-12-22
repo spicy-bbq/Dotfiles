@@ -276,8 +276,11 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 //spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpapers/puriri.jpg"
+spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpapers/madoka.jpg"
 spawn-sh-at-startup "eww open ewwbar"
+spawn-sh-at-startup "/usr/lib/xdg-desktop-portal-gnome"
+spawn-sh-at-startup "/usr/lib/xdg-desktop-portal-gtk"
+spawn-sh-at-startup "/usr/lib/xdg-desktop-portal-wlr"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -637,4 +640,8 @@ recent-windows {
         corner-radius 20
         padding 20
     }
+}
+
+environment {
+    DISPLAY ":0"
 }
