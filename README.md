@@ -1,3 +1,1 @@
-![](Pictures/awesome.png)
-
-![](Pictures/qtile.png)
+![](Pictures/niri.png)

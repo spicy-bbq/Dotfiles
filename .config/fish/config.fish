@@ -29,7 +29,7 @@ starship init fish | source
 #colorscript -e 45 | awk 'NR==3,NR==8'
 #colorscript -e 31 | awk 'NR==2,NR==10'
 #colorscript -e 39
-~/.config/fish/madoka.sh
+~/.config/fish/nekomata.sh
 
 export "MICRO_TRUECOLOR=1"
 
@@ -59,12 +59,12 @@ alias ewwrc='nvim ~/.config/eww/eww.yuck'
 alias ewwstyle='nvim ~/.config/eww/eww.scss'
 alias starshiprc='nvim ~/.config/starship.toml'
 alias c='clear'
-#alias night='redshift -O 3500'
+alias night='redshift -O 3500'
 #alias night='hyprsunset --temperature 3500 & disown'
-alias night='wlsunset & disown'
-#alias day='redshift -x'
+#alias night='wlsunset & disown'
+alias day='redshift -x'
 #alias day='killall hyprsunset'
-alias day='killall wlsunset'
+#alias day='killall wlsunset'
 alias dunstrc='nvim ~/.config/dunst/dunstrc'
 alias vimrc='nvim ~/.config/nvim'
 alias rofirc='nvim .config/rofi/config.rasi'

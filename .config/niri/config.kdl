@@ -120,7 +120,8 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "on-overflow"
+    center-focused-column "never"
+    always-center-single-column
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -200,8 +201,8 @@ layout {
         //off
 
         width 4
-        active-color "#ffc87f"
-        inactive-color "#6c7086"
+        inactive-color "#252525"
+        active-color "#DE3535"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -210,7 +211,7 @@ layout {
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
         // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        active-gradient from="#b4befe" to="f38ba8" angle=45
+        active-gradient from="#ffffff" to="#DE3535" angle=75 //relative-to="workspace-view"
 
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
@@ -276,7 +277,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 //spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpapers/madoka.jpg"
+spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpapers/nekomata4.jpeg"
 spawn-sh-at-startup "eww open ewwbar"
 spawn-sh-at-startup "/usr/lib/xdg-desktop-portal-gnome"
 spawn-sh-at-startup "/usr/lib/xdg-desktop-portal-gtk"
@@ -361,7 +362,7 @@ window-rule {
 
 window-rule {
     match is-floating=true
-    baba-is-float true
+    baba-is-float false
 }
 
 binds {
@@ -381,7 +382,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Super+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
-    Super+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Super+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "nwg-drawer -nocats -nofs -spacing 0 -mb 145 -mt 145 -ml 350 -mr 350"; }
     Super+Shift+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -400,8 +401,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,

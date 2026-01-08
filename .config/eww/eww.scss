@@ -14,14 +14,17 @@ $gray: #6c7086;
 $black: #11111b;
 $green: #a6e3a1;
 $transparent: rgba(0, 0, 0, 0.6);
+$nekomatared: #de3535;
+$nekomatawhite: #ffffff;
+$nekomatablack: #252525;
 
-$color1: $black;
-$color2: $red;
-$color3: $gray;
-$color4: $lavender;
+$color1: $nekomatablack;
+$color2: $nekomatared;
+$color3: $nekomatawhite;
+$color4: $nekomatawhite;
 
 .bar {
-  background: linear-gradient(45deg, $color4 0%, $color2 100%);
+  background: linear-gradient(60deg, $color4 0%, $color2 40%, $color2 60%, $color4 100%);
   color: $color2;
   font-weight: bold;
   font-size: 16px;
@@ -45,7 +48,7 @@ $color4: $lavender;
 }
 
 .current {
-  color: $color1;
+  color: $color2;
 }
 
 .workspace-entry {
@@ -58,7 +61,7 @@ $color4: $lavender;
 }
 
 .empty {
-  color: $color3;
+  color: $color1;
 }
 
 .stats {
@@ -340,7 +343,7 @@ $color4: $lavender;
   margin-right: 10px;
   padding-left: 10px;
   padding-right: 10px;
-  background: linear-gradient(45deg, $color2 0%, $color4 50%, $color2 100%);
+  background: $color3;
   border-radius: 10px;
 }
 

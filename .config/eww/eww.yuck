@@ -2,7 +2,7 @@
 (defpoll hour :interval "1s" `date +%H`)
 (defpoll minute :interval "1s" `date +%M`)
 (deflisten stats "bash ~/.config/eww/stats.sh")
-(defvar night true)
+(defvar night false)
 (defvar nyamenu_open false)
 
 (defwidget bar []
@@ -400,7 +400,7 @@
         (eventbox :class 'nyamenu-entry'
             :onclick {night == true ? "killall wlsunset && eww update night=false" : "wlsunset & disown && eww update night=true"} 
             (label :class 'nyamenu-entry-label'
-                :text 'toggle night mode'
+                :text 'toggle night light'
                 :xalign 0
             )
         )
